@@ -1,0 +1,25 @@
+name: expense_tracker
+description: "Personal Expense Tracker - Flutter + Riverpod + Sqflite + Clean Architecture."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # State management (pub.dev এ latest stable চেক করা হয়েছে)
+  flutter_riverpod: ^3.2.1
+  # Local database (SQLite) - assignment এর requirement
+  sqflite: ^2.4.2
+  # database file এর path বানানোর জন্য
+  path: ^1.9.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
