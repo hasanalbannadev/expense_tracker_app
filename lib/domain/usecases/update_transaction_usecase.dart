@@ -1,16 +1,19 @@
 // ============================================================
-// update_transaction_usecase.dart  (Domain layer)
-// আগের transaction এর তথ্য বদলানোর কাজ।
+// update_transaction_usecase.dart
+// আগের লেনদেন আপডেট করার use case। id না থাকলে আপডেট করা যাবে না।
 // ============================================================
 import '../entities/transaction_entity.dart';
 import '../repositories/transaction_repository.dart';
 
 class UpdateTransactionUseCase {
-  final TransactionRepository repository;
+  const UpdateTransactionUseCase(this._repository);
 
-  const UpdateTransactionUseCase(this.repository);
+  final TransactionRepository _repository;
 
   Future<void> call(TransactionEntity transaction) {
-    return repository.updateTransaction(transaction);
+    if (transaction.id == null) {
+      throw ArgumentError('Transaction id is required for update');
+    }
+    return _repository.updateTransaction(transaction);
   }
 }

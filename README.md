@@ -1,123 +1,104 @@
-# Expense Tracker (Flutter)
+# 💰 Expense Tracker
 
-![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
-![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
-![Riverpod](https://img.shields.io/badge/Riverpod-State_Management-2563EB?style=for-the-badge)
-![SQLite](https://img.shields.io/badge/Sqflite-SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
-![Material 3](https://img.shields.io/badge/Material_3-757575?style=for-the-badge&logo=materialdesign&logoColor=white)
-![Clean Architecture](https://img.shields.io/badge/Clean-Architecture-success?style=for-the-badge)
+Flutter দিয়ে বানানো **Personal Expense Tracker**। দৈনন্দিন আয়-ব্যয় যোগ, দেখা, আপডেট ও ডিলিট করা যায়।
+মোট আয়, মোট খরচ ও বর্তমান ব্যালেন্স নিজে নিজে (dynamic) হিসাব হয়। সব ডাটা **Sqflite** এ সেভ হয়, তাই অ্যাপ বন্ধ করে খুললেও থাকে।
 
-A Personal Expense Tracker built with **Flutter**, **Riverpod**, **Sqflite** and **Clean Architecture**.
-Users can add, view, update and delete income / expense transactions. Total income, total expense and
-current balance are calculated automatically. All data is stored locally in SQLite and stays available
-after the app is closed and reopened.
+![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter)
+![Riverpod](https://img.shields.io/badge/State-Riverpod%203-2E3192)
+![SQLite](https://img.shields.io/badge/DB-Sqflite-003B57?logo=sqlite)
+![Architecture](https://img.shields.io/badge/Architecture-Clean-16A34A)
 
-## Screenshots
+## ✨ Features
 
-| Dashboard | Add Transaction | All Transactions | Transaction Details |
-|:---:|:---:|:---:|:---:|
-| ![Dashboard](screenshots/01_dashboard.png) | ![Add](screenshots/02_add_transaction.png) | ![List](screenshots/03_all_transactions.png) | ![Details](screenshots/04_details.png) |
+| # | Assignment requirement | কোথায় আছে |
+|---|---|---|
+| 1 | Dashboard: app name, ৩টি summary card, recent list, FAB | `screens/dashboard`, `widgets/dashboard` |
+| 2 | Add Transaction + Validation | `screens/add_transaction`, `widgets/form`, `core/utils/validators.dart` |
+| 3 | Transaction List (`ListView.builder`, আয়=সবুজ / খরচ=লাল) | `screens/transaction_list` |
+| 4 | Update Transaction (আগের তথ্যসহ edit) | `screens/edit_transaction` |
+| 5 | Delete + AlertDialog, summary আপডেট | `widgets/common/confirm_dialog.dart` |
+| 6 | Transaction Details + Edit/Delete | `screens/transaction_details` |
+| 7 | Sqflite: `expense_tracker.db` → `transactions` table | `core/database`, `data/` |
 
-| Edit Transaction | Delete Dialog | Statistics | Profile |
-|:---:|:---:|:---:|:---:|
-| ![Edit](screenshots/05_edit_transaction.png) | ![Delete](screenshots/06_delete_dialog.png) | ![Stats](screenshots/07_statistics.png) | ![Profile](screenshots/08_profile.png) |
+**Extra:** Statistics (This Month / Last Month বার চার্ট), Profile, সার্চ, empty state, loading state।
 
-## Features
+## 🗃️ Database
 
-- **Dashboard**: app name, 3 summary cards (**Total Income**, **Total Expense**, **Current Balance**), recent transactions, and a FAB to add a transaction
-- **Add Transaction** form: Title, Amount, Category (`DropdownButton`), Transaction Type (Income / Expense), Date (Date Picker), Save button
-  - Title cannot be empty
-  - Amount must be a valid positive number
-  - Category and transaction type must be selected
-- **Transaction List** with `ListView.builder`: title, amount, category, date and type; income in green and expense in red; search by title or category
-- **Update Transaction**: tap a transaction, press Edit, the form opens with the saved data
-- **Delete Transaction**: `AlertDialog` confirmation, then list and dashboard summaries update instantly
-- **Transaction Details**: complete information with Edit and Delete options
-- **Statistics**: This Month / Last Month income-expense bar chart and balance
-- **Profile**: About App, Clear Data, Settings, Privacy Policy, Logout
-- Responsive layout (small phone to tablet)
+```sql
+CREATE TABLE transactions (
+  id       INTEGER PRIMARY KEY AUTOINCREMENT,
+  title    TEXT NOT NULL,
+  amount   REAL NOT NULL,
+  category TEXT NOT NULL,
+  type     TEXT NOT NULL,   -- 'income' | 'expense'
+  date     TEXT NOT NULL    -- ISO-8601
+)
+```
 
-## Tech
-
-| Item | Choice |
-|------|--------|
-| Framework | Flutter (Material 3) |
-| State management | `flutter_riverpod` (`AsyncNotifier` + `Provider`) |
-| Local database | `sqflite` (`expense_tracker.db`, table `transactions`) |
-| Architecture | Clean Architecture (core / data / domain / presentation) |
-
-## Database
-
-**Database name:** `expense_tracker.db` &nbsp; **Table name:** `transactions`
-
-| Column | Type |
-|--------|------|
-| id | INTEGER PRIMARY KEY AUTOINCREMENT |
-| title | TEXT |
-| amount | REAL |
-| category | TEXT |
-| type | TEXT (`income` / `expense`) |
-| date | TEXT (ISO 8601) |
-
-## Folder Structure
+## 📁 Folder Structure
 
 ```
 lib/
 ├── main.dart
+├── app.dart
 ├── core/
-│   ├── constants/        (app_constants, app_categories)
-│   ├── theme/            (app_colors, app_theme)
-│   └── utils/            (date_formatter, currency_formatter, validators, chart_scale)
+│   ├── constants/   app_colors, app_strings, app_categories, db_constants ...
+│   ├── database/    database_helper.dart
+│   ├── theme/       app_theme, app_input_decoration
+│   └── utils/       validators, currency_formatter, date_formatter, chart_axis
 ├── data/
-│   ├── models/transaction_model.dart
-│   ├── datasources/      (app_database, transaction_local_datasource)
-│   └── repositories/transaction_repository_impl.dart
+│   ├── models/        transaction_model.dart
+│   ├── datasources/   transaction_local_datasource.dart
+│   └── repositories/  transaction_repository_impl.dart
 ├── domain/
-│   ├── entities/         (transaction_entity, transaction_type, expense_summary)
-│   ├── repositories/transaction_repository.dart
-│   └── usecases/         (get, add, update, delete, clear_all, calculate_summary)
+│   ├── entities/      transaction_entity, transaction_type, transaction_summary
+│   ├── repositories/  transaction_repository.dart (abstract)
+│   └── usecases/      get / add / update / delete / clear / calculate_summary / monthly
 └── presentation/
-    ├── providers/        (transaction_providers, transaction_notifier, summary, recent, by_id, search, bottom_nav, stats)
-    ├── navigation/app_navigator.dart
-    ├── screens/          (main_shell, dashboard, all_transactions, transaction_form, transaction_details, statistics, profile)
-    └── widgets/
-        ├── common/       (responsive_body, empty_state, category_icon_circle, type_badge, confirm_dialog)
-        ├── navigation/   (app_bottom_nav, add_transaction_fab)
-        ├── dashboard/    (dashboard_header, summary_card, summary_cards_section, recent_transactions_section, recent_transaction_item)
-        ├── transactions/ (transactions_header, transactions_list, transaction_card)
-        ├── form/         (form_label, title_field, amount_field, category_dropdown, type_selector, type_option, date_picker_field, form_submit_button)
-        ├── details/      (details_header, details_info_card, details_info_row, details_actions)
-        ├── statistics/   (period_toggle, stats_legend, income_expense_chart, balance_card)
-        └── profile/      (profile_header, profile_menu_list, profile_menu_item)
+    ├── providers/     Riverpod providers & notifiers
+    ├── navigation/    app_navigator.dart
+    ├── screens/       main, dashboard, add, edit, list, details, statistics, profile
+    └── widgets/       common, dashboard, form, transaction, details, statistics, profile, navigation
 ```
 
-## Run the project
+**Data flow:** `UI → Provider/Notifier → UseCase → Repository → DataSource → Sqflite`
 
-Create a Flutter project named `expense_tracker`, then copy `lib/`, `test/`, `pubspec.yaml`
-and `analysis_options.yaml` from this repository into it (or run `flutter create .` inside this folder to generate the platform folders).
+## 🧠 State Management (Riverpod 3)
+
+- `transactionsProvider` (`AsyncNotifier`) — সব লেনদেনের মূল state; add/update/delete এর পর DB থেকে reload হয়।
+- `summaryProvider`, `recentTransactionsProvider`, `filteredTransactionsProvider`, `monthlyStatsProvider` — মূল state থেকে তৈরি, তাই কোনো লেনদেন বদলালে Dashboard, List ও Statistics নিজে আপডেট হয়।
+
+## ▶️ Run করার নিয়ম
 
 ```bash
-flutter create .
+# ১) নতুন Flutter প্রজেক্ট বানান
+flutter create expense_tracker
+cd expense_tracker
+
+# ২) এই repo এর lib/, test/, pubspec.yaml, analysis_options.yaml দিয়ে প্রতিস্থাপন করুন
+#    (পুরনো lib, test ফোল্ডার মুছে দিয়ে কপি করবেন; test/widget_test.dart মুছে যাবে)
+
+# ৩) প্যাকেজ আনুন ও চালান
 flutter pub get
 flutter run
 ```
 
-> `sqflite` works on Android and iOS. Run the app on an Android/iOS emulator or device.
+> Red line দেখালে আগে `flutter pub get` চালান, তারপর VS Code এ `Dart: Restart Analysis Server` দিন।
 
-## Test
+Test চালাতে: `flutter test`
 
-```bash
-flutter test
-```
+## ✅ Validation
 
-## Assignment Checklist
+- Title খালি থাকা যাবে না
+- Amount অবশ্যই valid positive number
+- Category সিলেক্ট করতে হবে
+- Transaction type (Income/Expense) সিলেক্ট করতে হবে
+- Date সিলেক্ট করতে হবে
 
-- [x] Dashboard with app name, 3 summary cards, recent transactions and FAB
-- [x] Add Transaction form (Title, Amount, Category dropdown, Type, Date picker, Save)
-- [x] Validation (title, positive amount, category, type)
-- [x] Transaction list with `ListView.builder`, income / expense colors
-- [x] Update transaction (edit screen with saved data)
-- [x] Delete transaction with `AlertDialog`, instant list and summary update
-- [x] Transaction details with Edit and Delete
-- [x] Sqflite local database (`expense_tracker.db`, table `transactions`), data persists after restart
-- [x] Riverpod state management with Clean Architecture
+## 📦 Packages
+
+`flutter_riverpod`, `sqflite`, `path`, `intl`
+
+## 👤 Author
+
+Hasan Al Banna

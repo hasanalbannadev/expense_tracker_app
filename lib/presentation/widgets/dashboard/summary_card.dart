@@ -1,19 +1,12 @@
 // ============================================================
 // summary_card.dart
-// একটি summary কার্ড: বাম পাশে আইকন, ডানে লেখা + পরিমাণ।
-// (Total Income / Total Expense / Current Balance তিনটিতেই ব্যবহার হয়)
+// একটি summary কার্ড (আইকন + লেবেল + টাকার অংক)। তিনটি কার্ডেই এটি ব্যবহার হয়।
 // ============================================================
 import 'package:flutter/material.dart';
 
-import '../../../core/theme/app_colors.dart';
+import '../../../core/constants/app_colors.dart';
 
 class SummaryCard extends StatelessWidget {
-  final String label;
-  final String value;
-  final IconData icon;
-  final Color iconColor;
-  final List<Color> gradient; // হালকা gradient ব্যাকগ্রাউন্ড
-
   const SummaryCard({
     super.key,
     required this.label,
@@ -23,30 +16,32 @@ class SummaryCard extends StatelessWidget {
     required this.gradient,
   });
 
+  final String label;
+  final String value;
+  final IconData icon;
+  final Color iconColor;
+  final Gradient gradient;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: gradient,
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: const [
+        gradient: gradient,
+        borderRadius: BorderRadius.circular(22),
+        boxShadow: [
           BoxShadow(
-            color: Color(0x14000000),
-            blurRadius: 10,
-            offset: Offset(0, 4),
+            color: iconColor.withAlpha(31),
+            blurRadius: 14,
+            offset: const Offset(0, 6),
           ),
         ],
       ),
       child: Row(
         children: [
           Icon(icon, size: 40, color: iconColor),
-          const SizedBox(width: 16),
+          const SizedBox(width: 18),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,11 +49,13 @@ class SummaryCard extends StatelessWidget {
                 Text(
                   label,
                   style: const TextStyle(
-                    fontSize: 16,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
                     color: AppColors.textPrimary,
                   ),
                 ),
-                // বড় সংখ্যা হলে scale down হয়ে ফিট করবে
+                const SizedBox(height: 4),
+                // বড় সংখ্যা ছোট স্ক্রিনে কেটে না যায় সেজন্য FittedBox
                 FittedBox(
                   fit: BoxFit.scaleDown,
                   alignment: Alignment.centerLeft,

@@ -1,18 +1,11 @@
 // ============================================================
-// transaction_entity.dart  (Domain layer)
-// একটি transaction এর মূল ডাটা। কোনো Flutter/Package এর উপর নির্ভর করে না।
-// id null থাকলে বুঝতে হবে এটি এখনো database এ সেভ হয়নি।
+// transaction_entity.dart
+// একটি লেনদেনের মূল ডাটা। এটি pure Dart; ডাটাবেস বা UI সম্পর্কে কিছু জানে না।
+// id null মানে নতুন লেনদেন (ডাটাবেস AUTOINCREMENT দিয়ে id দেবে)।
 // ============================================================
 import 'transaction_type.dart';
 
 class TransactionEntity {
-  final int? id;
-  final String title;
-  final double amount;
-  final String category;
-  final TransactionType type;
-  final DateTime date;
-
   const TransactionEntity({
     this.id,
     required this.title,
@@ -22,7 +15,12 @@ class TransactionEntity {
     required this.date,
   });
 
-  bool get isIncome => type == TransactionType.income;
+  final int? id;
+  final String title;
+  final double amount;
+  final String category;
+  final TransactionType type;
+  final DateTime date;
 
   TransactionEntity copyWith({
     int? id,
@@ -41,4 +39,18 @@ class TransactionEntity {
       date: date ?? this.date,
     );
   }
+
+  @override
+  bool operator ==(Object other) {
+    return other is TransactionEntity &&
+        other.id == id &&
+        other.title == title &&
+        other.amount == amount &&
+        other.category == category &&
+        other.type == type &&
+        other.date == date;
+  }
+
+  @override
+  int get hashCode => Object.hash(id, title, amount, category, type, date);
 }

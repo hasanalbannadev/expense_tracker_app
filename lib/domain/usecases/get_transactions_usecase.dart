@@ -1,14 +1,14 @@
 // ============================================================
-// get_transactions_usecase.dart  (Domain layer)
-// সব transaction এর তালিকা আনার কাজ (নতুন তারিখ আগে)।
+// get_transactions_usecase.dart
+// সব লেনদেন ডাটাবেস থেকে আনার use case (নতুন আগে)।
 // ============================================================
 import '../entities/transaction_entity.dart';
 import '../repositories/transaction_repository.dart';
 
 class GetTransactionsUseCase {
-  final TransactionRepository repository;
+  const GetTransactionsUseCase(this._repository);
 
-  const GetTransactionsUseCase(this.repository);
+  final TransactionRepository _repository;
 
-  Future<List<TransactionEntity>> call() => repository.getTransactions();
+  Future<List<TransactionEntity>> call() => _repository.getAllTransactions();
 }

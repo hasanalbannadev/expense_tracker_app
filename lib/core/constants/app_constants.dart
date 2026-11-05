@@ -1,20 +1,17 @@
 // ============================================================
 // app_constants.dart
-// অ্যাপের সব fixed মান (নাম, টাকার চিহ্ন, database এর নাম) এক জায়গায়।
+// অ্যাপের সাধারণ ধ্রুবক (constant) মান এক জায়গায় রাখা হয়েছে।
 // ============================================================
 class AppConstants {
-  AppConstants._(); // object বানানো যাবে না
+  AppConstants._();
 
   static const String appName = 'Expense Tracker';
-  static const String currencySymbol = '৳';
-  static const String profileName = 'Hasan Al Banna';
   static const String appVersion = '1.0.0';
+  static const String currencySymbol = '৳';
 
-  // ---- Database (Assignment: expense_tracker.db / transactions) ----
-  static const String dbName = 'expense_tracker.db';
-  static const String tableName = 'transactions';
-  static const int dbVersion = 1;
+  // প্রোফাইল স্ক্রিনে যে নাম দেখাবে
+  static const String profileName = 'Hasan Al Banna';
 
-  /// Dashboard এ সর্বশেষ কয়টি transaction দেখাবে
-  static const int recentLimit = 4;
+  // ড্যাশবোর্ডে সর্বশেষ কয়টি লেনদেন দেখাবে
+  static const int recentTransactionLimit = 4;
 }

@@ -1,95 +1,97 @@
 // ============================================================
 // app_categories.dart
-// Category এর তালিকা + প্রতিটির icon ও রং।
-// Database এ শুধু category এর নাম (TEXT) সেভ হয়।
+// ক্যাটাগরির তালিকা (Dropdown এ দেখাবে)। প্রতিটি ক্যাটাগরির আইকন ও রং আছে।
+// ডাটাবেসে শুধু ক্যাটাগরির নাম (String) সেভ হয়।
 // ============================================================
 import 'package:flutter/material.dart';
 
-class CategoryInfo {
-  final String name;
-  final IconData icon;
-  final Color color; // icon এর রং
-  final Color background; // গোল বৃত্তের হালকা রং
-
-  const CategoryInfo({
+class TransactionCategory {
+  const TransactionCategory({
     required this.name,
     required this.icon,
     required this.color,
     required this.background,
   });
+
+  final String name;
+  final IconData icon;
+  final Color color;
+  final Color background;
 }
 
 class AppCategories {
   AppCategories._();
 
-  static const List<CategoryInfo> all = [
-    CategoryInfo(
+  static const TransactionCategory other = TransactionCategory(
+    name: 'Other',
+    icon: Icons.category_rounded,
+    color: Color(0xFF64748B),
+    background: Color(0xFFECEFF4),
+  );
+
+  static const List<TransactionCategory> all = [
+    TransactionCategory(
       name: 'Salary',
       icon: Icons.account_balance_wallet_rounded,
       color: Color(0xFF16A34A),
-      background: Color(0xFFDCFCE7),
+      background: Color(0xFFDDF5E6),
     ),
-    CategoryInfo(
+    TransactionCategory(
       name: 'Freelance',
       icon: Icons.laptop_mac_rounded,
-      color: Color(0xFF4F46E5),
-      background: Color(0xFFE0E7FF),
+      color: Color(0xFF3F3DA8),
+      background: Color(0xFFE8E9FA),
     ),
-    CategoryInfo(
+    TransactionCategory(
       name: 'Food',
       icon: Icons.restaurant_rounded,
       color: Color(0xFFEF4444),
-      background: Color(0xFFFEE2E2),
+      background: Color(0xFFFDE4E4),
     ),
-    CategoryInfo(
+    TransactionCategory(
       name: 'Shopping',
       icon: Icons.shopping_cart_rounded,
       color: Color(0xFF2563EB),
-      background: Color(0xFFDBEAFE),
+      background: Color(0xFFE3EEFF),
     ),
-    CategoryInfo(
+    TransactionCategory(
       name: 'Gift',
       icon: Icons.card_giftcard_rounded,
-      color: Color(0xFF6D28D9),
-      background: Color(0xFFEDE9FE),
+      color: Color(0xFF4F46E5),
+      background: Color(0xFFEDEBFF),
     ),
-    CategoryInfo(
+    TransactionCategory(
       name: 'Transport',
       icon: Icons.directions_bus_rounded,
-      color: Color(0xFFEA580C),
-      background: Color(0xFFFFEDD5),
+      color: Color(0xFFD97706),
+      background: Color(0xFFFEF3D9),
     ),
-    CategoryInfo(
+    TransactionCategory(
       name: 'Bills',
       icon: Icons.receipt_long_rounded,
       color: Color(0xFF0D9488),
-      background: Color(0xFFCCFBF1),
+      background: Color(0xFFD9F4F0),
     ),
-    CategoryInfo(
+    TransactionCategory(
       name: 'Health',
-      icon: Icons.favorite_rounded,
+      icon: Icons.medical_services_rounded,
       color: Color(0xFFDB2777),
-      background: Color(0xFFFCE7F3),
+      background: Color(0xFFFCE4F0),
     ),
-    CategoryInfo(
+    TransactionCategory(
       name: 'Education',
       icon: Icons.school_rounded,
-      color: Color(0xFF0284C7),
-      background: Color(0xFFE0F2FE),
+      color: Color(0xFF7C3AED),
+      background: Color(0xFFEFE6FD),
     ),
-    CategoryInfo(
-      name: 'Other',
-      icon: Icons.category_rounded,
-      color: Color(0xFF4B5563),
-      background: Color(0xFFF3F4F6),
-    ),
+    other,
   ];
 
-  /// শুধু নামের তালিকা (Dropdown এর জন্য)
-  static List<String> get names => all.map((c) => c.name).toList();
-
-  /// নাম দিয়ে category খোঁজা; না পেলে "Other" ফেরত দেয়
-  static CategoryInfo byName(String name) {
-    return all.firstWhere((c) => c.name == name, orElse: () => all.last);
+  /// নাম দিয়ে ক্যাটাগরি খোঁজে; না পেলে "Other" ফেরত দেয়।
+  static TransactionCategory byName(String name) {
+    for (final category in all) {
+      if (category.name == name) return category;
+    }
+    return other;
   }
 }

@@ -1,13 +1,13 @@
 // ============================================================
-// delete_transaction_usecase.dart  (Domain layer)
-// id দিয়ে একটি transaction মুছে ফেলার কাজ।
+// delete_transaction_usecase.dart
+// id দিয়ে একটি লেনদেন মুছে ফেলার use case।
 // ============================================================
 import '../repositories/transaction_repository.dart';
 
 class DeleteTransactionUseCase {
-  final TransactionRepository repository;
+  const DeleteTransactionUseCase(this._repository);
 
-  const DeleteTransactionUseCase(this.repository);
+  final TransactionRepository _repository;
 
-  Future<void> call(int id) => repository.deleteTransaction(id);
+  Future<void> call(int id) => _repository.deleteTransaction(id);
 }

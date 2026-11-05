@@ -1,33 +1,38 @@
 // ============================================================
-// app_navigator.dart  (Presentation layer)
-// স্ক্রিন খোলার কাজ এক জায়গায় - যাতে widget গুলো ছোট ও পরিষ্কার থাকে।
+// app_navigator.dart
+// স্ক্রিন বদলানোর সব কোড এক জায়গায়। UI ফাইলে Navigator.push লিখতে হয় না।
 // ============================================================
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/transaction_entity.dart';
-import '../screens/transaction_details_screen.dart';
-import '../screens/transaction_form_screen.dart';
+import '../screens/add_transaction/add_transaction_screen.dart';
+import '../screens/edit_transaction/edit_transaction_screen.dart';
+import '../screens/transaction_details/transaction_details_screen.dart';
 
 class AppNavigator {
   AppNavigator._();
 
-  /// Add (transaction = null) অথবা Edit (transaction দিলে) ফর্ম খোলে
-  static Future<void> openForm(
-    BuildContext context, {
-    TransactionEntity? transaction,
-  }) {
-    return Navigator.of(context).push(
+  static Future<void> toAddTransaction(BuildContext context) {
+    return Navigator.of(context).push<void>(
+      MaterialPageRoute<void>(builder: (_) => const AddTransactionScreen()),
+    );
+  }
+
+  static Future<void> toDetails(BuildContext context, int transactionId) {
+    return Navigator.of(context).push<void>(
       MaterialPageRoute<void>(
-        builder: (_) => TransactionFormScreen(transaction: transaction),
+        builder: (_) => TransactionDetailsScreen(transactionId: transactionId),
       ),
     );
   }
 
-  /// Transaction Details স্ক্রিন খোলে
-  static Future<void> openDetails(BuildContext context, int id) {
-    return Navigator.of(context).push(
+  static Future<void> toEdit(
+    BuildContext context,
+    TransactionEntity transaction,
+  ) {
+    return Navigator.of(context).push<void>(
       MaterialPageRoute<void>(
-        builder: (_) => TransactionDetailsScreen(transactionId: id),
+        builder: (_) => EditTransactionScreen(transaction: transaction),
       ),
     );
   }

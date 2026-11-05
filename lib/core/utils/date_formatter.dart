@@ -1,32 +1,20 @@
 // ============================================================
 // date_formatter.dart
-// তারিখ দেখানোর ফরম্যাট: "Jun 16, 2025" (intl প্যাকেজ ছাড়াই)
+// তারিখ দেখানো (Jun 13, 2025) এবং ডাটাবেসে সেভ/লোড করার কনভার্টার।
 // ============================================================
+import 'package:intl/intl.dart';
+
 class DateFormatter {
   DateFormatter._();
 
-  static const List<String> _months = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ];
+  static final DateFormat _display = DateFormat('MMM d, yyyy');
 
-  /// DateTime -> "Jun 16, 2025"
-  static String short(DateTime date) {
-    return '${_months[date.month - 1]} ${date.day}, ${date.year}';
-  }
+  /// UI তে দেখানোর জন্য
+  static String display(DateTime date) => _display.format(date);
 
-  /// দুটি তারিখ একই মাসের কিনা (Statistics এ লাগে)
-  static bool isSameMonth(DateTime a, DateTime b) {
-    return a.year == b.year && a.month == b.month;
-  }
+  /// ডাটাবেসে TEXT হিসেবে সেভ করার জন্য (ISO-8601)
+  static String toStorage(DateTime date) => date.toIso8601String();
+
+  /// ডাটাবেস থেকে TEXT পড়ে DateTime বানানো
+  static DateTime fromStorage(String value) => DateTime.parse(value);
 }

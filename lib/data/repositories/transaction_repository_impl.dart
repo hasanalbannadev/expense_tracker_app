@@ -1,6 +1,7 @@
 // ============================================================
-// transaction_repository_impl.dart  (Data layer)
-// Domain এর TransactionRepository contract টি এখানে implement করা হয়েছে।
+// transaction_repository_impl.dart
+// Domain এর TransactionRepository এর আসল রূপ।
+// Entity <-> Model রূপান্তর করে datasource কে কল করে।
 // ============================================================
 import '../../domain/entities/transaction_entity.dart';
 import '../../domain/repositories/transaction_repository.dart';
@@ -8,28 +9,33 @@ import '../datasources/transaction_local_datasource.dart';
 import '../models/transaction_model.dart';
 
 class TransactionRepositoryImpl implements TransactionRepository {
-  final TransactionLocalDataSource dataSource;
+  const TransactionRepositoryImpl(this._dataSource);
 
-  const TransactionRepositoryImpl(this.dataSource);
+  final TransactionLocalDataSource _dataSource;
 
   @override
-  Future<List<TransactionEntity>> getTransactions() {
-    return dataSource.getTransactions();
+  Future<List<TransactionEntity>> getAllTransactions() async {
+    final models = await _dataSource.getAll();
+    return models.map((m) => m.toEntity()).toList();
   }
 
   @override
   Future<int> addTransaction(TransactionEntity transaction) {
-    return dataSource.insert(TransactionModel.fromEntity(transaction));
+    return _dataSource.insert(TransactionModel.fromEntity(transaction));
   }
 
   @override
-  Future<void> updateTransaction(TransactionEntity transaction) {
-    return dataSource.update(TransactionModel.fromEntity(transaction));
+  Future<void> updateTransaction(TransactionEntity transaction) async {
+    await _dataSource.update(TransactionModel.fromEntity(transaction));
   }
 
   @override
-  Future<void> deleteTransaction(int id) => dataSource.delete(id);
+  Future<void> deleteTransaction(int id) async {
+    await _dataSource.delete(id);
+  }
 
   @override
-  Future<void> clearAll() => dataSource.deleteAll();
+  Future<void> clearAllTransactions() async {
+    await _dataSource.deleteAll();
+  }
 }

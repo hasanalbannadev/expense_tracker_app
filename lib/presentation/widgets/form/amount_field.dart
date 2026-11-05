@@ -1,43 +1,60 @@
 // ============================================================
 // amount_field.dart
-// Amount এর TextField। শুধু সংখ্যা ও একটি দশমিক বিন্দু লেখা যায়।
-// Validation: valid positive number হতে হবে।
+// Amount ইনপুট: বাম পাশে ৳ বক্স, ডান পাশে সংখ্যার ফিল্ড।
+// শুধু সংখ্যা, দশমিক বিন্দু ও কমা লেখা যায়; valid positive number না হলে error।
 // ============================================================
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_strings.dart';
+import '../../../core/theme/app_input_decoration.dart';
 import '../../../core/utils/validators.dart';
 
 class AmountField extends StatelessWidget {
-  final TextEditingController controller;
-
   const AmountField({super.key, required this.controller});
+
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
-      textInputAction: TextInputAction.next,
-      keyboardType: const TextInputType.numberWithOptions(decimal: true),
-      // সর্বোচ্চ ২ দশমিক ঘর
-      inputFormatters: [
-        FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d{0,2}')),
-      ],
-      style: const TextStyle(fontSize: 17),
-      decoration: const InputDecoration(
-        hintText: 'Enter amount',
-        prefixIcon: SizedBox(
-          width: 48,
-          child: Center(
-            child: Text(
-              AppConstants.currencySymbol,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // ৳ চিহ্নের বক্স
+        Container(
+          width: 52,
+          height: 54,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: AppColors.border),
+          ),
+          child: const Text(
+            AppConstants.currencySymbol,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+              color: AppColors.primary,
             ),
           ),
         ),
-      ),
-      validator: Validators.amount,
+        const SizedBox(width: 8),
+        Expanded(
+          child: TextFormField(
+            controller: controller,
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+            textInputAction: TextInputAction.done,
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp(r'[0-9.,]')),
+            ],
+            validator: Validators.amount,
+            decoration: AppInputDecoration.build(hint: AppStrings.enterAmount),
+          ),
+        ),
+      ],
     );
   }
 }

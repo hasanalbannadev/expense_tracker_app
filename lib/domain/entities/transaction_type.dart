@@ -1,18 +1,24 @@
 // ============================================================
-// transaction_type.dart  (Domain layer)
-// Transaction এর ধরন: Income অথবা Expense
+// transaction_type.dart
+// লেনদেনের ধরন: Income (আয়) অথবা Expense (খরচ)।
+// ডাটাবেসে "income" / "expense" টেক্সট হিসেবে সেভ হয়।
 // ============================================================
 enum TransactionType {
-  income('Income'),
-  expense('Expense');
+  income,
+  expense;
 
-  final String label; // UI তে দেখানোর নাম
-  const TransactionType(this.label);
+  /// ডাটাবেসে সেভ করার মান
+  String get value => name;
 
-  /// Database এর TEXT ("income"/"expense") থেকে enum বানানো
-  static TransactionType fromName(String name) {
+  /// UI তে দেখানোর নাম
+  String get label => this == TransactionType.income ? 'Income' : 'Expense';
+
+  bool get isIncome => this == TransactionType.income;
+
+  /// ডাটাবেসের টেক্সট থেকে enum বানানো
+  static TransactionType fromValue(String value) {
     return TransactionType.values.firstWhere(
-      (type) => type.name == name,
+      (type) => type.name == value.toLowerCase(),
       orElse: () => TransactionType.expense,
     );
   }

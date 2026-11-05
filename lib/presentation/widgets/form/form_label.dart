@@ -1,15 +1,15 @@
 // ============================================================
 // form_label.dart
-// ফর্মের ফিল্ডের উপরের লেখা, যেমন: "Title *"
+// ফিল্ডের উপরের লেবেল; লাল * মানে ফিল্ডটি বাধ্যতামূলক।
 // ============================================================
 import 'package:flutter/material.dart';
 
-import '../../../core/theme/app_colors.dart';
+import '../../../core/constants/app_colors.dart';
 
 class FormLabel extends StatelessWidget {
-  final String text;
-
   const FormLabel(this.text, {super.key});
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +17,18 @@ class FormLabel extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8),
       child: Text.rich(
         TextSpan(
-          children: [
-            TextSpan(text: text),
-            // লাল * মানে ফিল্ডটি বাধ্যতামূলক
-            const TextSpan(
+          text: text,
+          style: const TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+            color: AppColors.textPrimary,
+          ),
+          children: const [
+            TextSpan(
               text: ' *',
               style: TextStyle(color: AppColors.expense),
             ),
           ],
-        ),
-        style: const TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w700,
-          color: AppColors.textPrimary,
         ),
       ),
     );

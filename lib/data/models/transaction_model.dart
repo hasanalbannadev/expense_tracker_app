@@ -1,57 +1,74 @@
 // ============================================================
-// transaction_model.dart  (Data layer)
-// TransactionEntity কে extend করে। Database Map <-> Model রূপান্তর এখানে।
-//
-// Table: transactions
-//   id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, amount REAL,
-//   category TEXT, type TEXT, date TEXT
+// transaction_model.dart
+// ডাটাবেসের Map <-> Entity রূপান্তরের মডেল।
+// date টেক্সট (ISO-8601), type টেক্সট ("income"/"expense") হিসেবে সেভ হয়।
 // ============================================================
+import '../../core/constants/db_constants.dart';
+import '../../core/utils/date_formatter.dart';
 import '../../domain/entities/transaction_entity.dart';
 import '../../domain/entities/transaction_type.dart';
 
-class TransactionModel extends TransactionEntity {
+class TransactionModel {
   const TransactionModel({
-    super.id,
-    required super.title,
-    required super.amount,
-    required super.category,
-    required super.type,
-    required super.date,
+    this.id,
+    required this.title,
+    required this.amount,
+    required this.category,
+    required this.type,
+    required this.date,
   });
 
-  /// Domain entity থেকে Data model বানানো
+  final int? id;
+  final String title;
+  final double amount;
+  final String category;
+  final String type;
+  final String date;
+
+  /// ডাটাবেসের row (Map) থেকে model
+  factory TransactionModel.fromMap(Map<String, Object?> map) {
+    return TransactionModel(
+      id: map[DbConstants.colId] as int?,
+      title: map[DbConstants.colTitle] as String,
+      amount: (map[DbConstants.colAmount] as num).toDouble(),
+      category: map[DbConstants.colCategory] as String,
+      type: map[DbConstants.colType] as String,
+      date: map[DbConstants.colDate] as String,
+    );
+  }
+
+  /// Entity থেকে model
   factory TransactionModel.fromEntity(TransactionEntity entity) {
     return TransactionModel(
       id: entity.id,
       title: entity.title,
       amount: entity.amount,
       category: entity.category,
-      type: entity.type,
-      date: entity.date,
+      type: entity.type.value,
+      date: DateFormatter.toStorage(entity.date),
     );
   }
 
-  /// Database এর row (Map) থেকে model বানানো
-  factory TransactionModel.fromMap(Map<String, Object?> map) {
-    return TransactionModel(
-      id: map['id'] as int,
-      title: map['title'] as String,
-      amount: (map['amount'] as num).toDouble(),
-      category: map['category'] as String,
-      type: TransactionType.fromName(map['type'] as String),
-      date: DateTime.parse(map['date'] as String),
-    );
-  }
-
-  /// Database এ লেখার জন্য Map। id null হলে AUTOINCREMENT নিজে বসাবে।
+  /// ডাটাবেসে লেখার জন্য Map। নতুন হলে id দেওয়া হয় না (AUTOINCREMENT)।
   Map<String, Object?> toMap() {
     return {
-      if (id != null) 'id': id,
-      'title': title,
-      'amount': amount,
-      'category': category,
-      'type': type.name, // "income" / "expense"
-      'date': date.toIso8601String(), // TEXT হিসেবে সেভ হয়
+      if (id != null) DbConstants.colId: id,
+      DbConstants.colTitle: title,
+      DbConstants.colAmount: amount,
+      DbConstants.colCategory: category,
+      DbConstants.colType: type,
+      DbConstants.colDate: date,
     };
+  }
+
+  TransactionEntity toEntity() {
+    return TransactionEntity(
+      id: id,
+      title: title,
+      amount: amount,
+      category: category,
+      type: TransactionType.fromValue(type),
+      date: DateFormatter.fromStorage(date),
+    );
   }
 }

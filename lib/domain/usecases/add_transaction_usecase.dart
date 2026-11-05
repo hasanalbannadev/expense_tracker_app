@@ -1,16 +1,16 @@
 // ============================================================
-// add_transaction_usecase.dart  (Domain layer)
-// নতুন transaction যোগ করার কাজ।
+// add_transaction_usecase.dart
+// নতুন লেনদেন যোগ করার use case।
 // ============================================================
 import '../entities/transaction_entity.dart';
 import '../repositories/transaction_repository.dart';
 
 class AddTransactionUseCase {
-  final TransactionRepository repository;
+  const AddTransactionUseCase(this._repository);
 
-  const AddTransactionUseCase(this.repository);
+  final TransactionRepository _repository;
 
   Future<int> call(TransactionEntity transaction) {
-    return repository.addTransaction(transaction);
+    return _repository.addTransaction(transaction);
   }
 }
