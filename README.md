@@ -27,21 +27,22 @@ Add, view, update and delete your daily income & expenses, and watch your balanc
 <div align="center">
 <table>
   <tr>
-    <td align="center"><img src="screenshots/dashboard.png" width="200" alt="Dashboard"/><br/><sub><b>Dashboard</b></sub></td>
-    <td align="center"><img src="screenshots/add_transaction.png" width="200" alt="Add Transaction"/><br/><sub><b>Add Transaction</b></sub></td>
-    <td align="center"><img src="screenshots/transaction_list.png" width="200" alt="All Transactions"/><br/><sub><b>All Transactions</b></sub></td>
-    <td align="center"><img src="screenshots/transaction_details.png" width="200" alt="Transaction Details"/><br/><sub><b>Details</b></sub></td>
+    <td align="center"><img src="screenshots/dashboard.jpeg" width="220" alt="Dashboard"/><br/><sub><b>Dashboard</b></sub></td>
+    <td align="center"><img src="screenshots/add_transaction.jpeg" width="220" alt="Add Transaction"/><br/><sub><b>Add Transaction</b></sub></td>
+    <td align="center"><img src="screenshots/all_transaction.jpeg" width="220" alt="All Transactions"/><br/><sub><b>All Transactions</b></sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="screenshots/edit_transaction.png" width="200" alt="Edit Transaction"/><br/><sub><b>Edit Transaction</b></sub></td>
-    <td align="center"><img src="screenshots/delete_dialog.png" width="200" alt="Delete Dialog"/><br/><sub><b>Delete Confirmation</b></sub></td>
-    <td align="center"><img src="screenshots/statistics.png" width="200" alt="Statistics"/><br/><sub><b>Statistics</b></sub></td>
-    <td align="center"><img src="screenshots/profile.png" width="200" alt="Profile"/><br/><sub><b>Profile</b></sub></td>
+    <td align="center"><img src="screenshots/transaction_details.jpeg" width="220" alt="Transaction Details"/><br/><sub><b>Transaction Details</b></sub></td>
+    <td align="center"><img src="screenshots/edit_transaction.jpeg" width="220" alt="Edit Transaction"/><br/><sub><b>Edit Transaction</b></sub></td>
+    <td align="center"><img src="screenshots/delete_transaction.jpeg" width="220" alt="Delete Confirmation"/><br/><sub><b>Delete Confirmation</b></sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="screenshots/stats.jpeg" width="220" alt="Statistics"/><br/><sub><b>Statistics</b></sub></td>
+    <td align="center"><img src="screenshots/stats_this_month.jpeg" width="220" alt="Statistics This Month"/><br/><sub><b>Statistics (This Month)</b></sub></td>
+    <td align="center"><img src="screenshots/profile_info.jpeg" width="220" alt="Profile"/><br/><sub><b>Profile</b></sub></td>
   </tr>
 </table>
 </div>
-
----
 
 ## ✨ Features
 
