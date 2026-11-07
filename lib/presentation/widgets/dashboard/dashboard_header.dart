@@ -1,6 +1,5 @@
 // ============================================================
 // dashboard_header.dart
-// Dashboard এর উপরের অংশ: লোগো + "Expense Tracker" নাম + Statistics আইকন।
 // ============================================================
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

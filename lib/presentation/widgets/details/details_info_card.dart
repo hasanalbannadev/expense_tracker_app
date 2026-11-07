@@ -1,6 +1,5 @@
 // ============================================================
 // details_info_card.dart
-// লেনদেনের সম্পূর্ণ তথ্য: Category, Type, Date (assignment এর Details অংশ)।
 // ============================================================
 import 'package:flutter/material.dart';
 

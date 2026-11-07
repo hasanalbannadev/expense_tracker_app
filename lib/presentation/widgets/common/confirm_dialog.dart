@@ -1,7 +1,6 @@
 // ============================================================
 // confirm_dialog.dart
-// AlertDialog দিয়ে নিশ্চিতকরণ। Delete / Clear Data / Logout সবখানে ব্যবহার হয়।
-// true = নিশ্চিত করেছে, false = Cancel করেছে।
+// AlertDialog
 // ============================================================
 import 'package:flutter/material.dart';
 
@@ -93,7 +92,7 @@ Future<bool> showConfirmDialog(
   return result ?? false;
 }
 
-/// লেনদেন মুছে ফেলার আগে দেখানো AlertDialog
+/// AlertDialog
 Future<bool> showDeleteConfirmDialog(BuildContext context) {
   return showConfirmDialog(
     context,

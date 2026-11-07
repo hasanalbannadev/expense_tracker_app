@@ -1,8 +1,5 @@
 // ============================================================
 // category_dropdown.dart
-// Category বেছে নেওয়ার DropdownButton।
-// DropdownButton + FormField দিয়ে বানানো, তাই সব Flutter ভার্সনে কাজ করে
-// এবং সিলেক্ট না করলে validation error দেখায়।
 // ============================================================
 import 'package:flutter/material.dart';
 

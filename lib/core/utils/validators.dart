@@ -1,11 +1,11 @@
 // ============================================================
 // validators.dart
-// Assignment এর সব Validation rule এক জায়গায়:
-//  - Title খালি থাকা যাবে না
-//  - Amount অবশ্যই valid positive number
-//  - Category সিলেক্ট করতে হবে
-//  - Transaction type সিলেক্ট করতে হবে
-//  - Date সিলেক্ট করতে হবে
+// Assignment Validation rule
+//  - Title
+//  - Amount  valid positive number
+//  - Category
+//  - Transaction type
+//  - Date
 // ============================================================
 import '../../domain/entities/transaction_type.dart';
 

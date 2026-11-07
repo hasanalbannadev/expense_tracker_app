@@ -1,6 +1,6 @@
 // ============================================================
 // statistics_screen.dart
-// This Month / Last Month এর আয়-ব্যয়ের বার চার্ট ও ব্যালেন্স।
+// This Month / Last Month income and cost and balance of chart
 // ============================================================
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -28,7 +28,6 @@ class StatisticsScreen extends ConsumerWidget {
         const SizedBox(height: 18),
         const ChartLegend(),
         const SizedBox(height: 12),
-        // key দেওয়ায় মাস বদলালে চার্ট আবার অ্যানিমেট হয়
         StatsBarChart(
           key: ValueKey('${summary.totalIncome}-${summary.totalExpense}'),
           income: summary.totalIncome,

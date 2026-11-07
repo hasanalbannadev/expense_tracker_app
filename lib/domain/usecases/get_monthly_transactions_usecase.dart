@@ -1,6 +1,5 @@
 // ============================================================
 // get_monthly_transactions_usecase.dart
-// নির্দিষ্ট মাসের লেনদেন ফিল্টার করে (Statistics: This Month / Last Month)।
 // ============================================================
 import '../entities/transaction_entity.dart';
 

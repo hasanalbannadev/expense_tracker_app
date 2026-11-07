@@ -1,7 +1,5 @@
 // ============================================================
 // chart_axis.dart
-// বার চার্টের Y-axis এর "সুন্দর" সর্বোচ্চ মান ও ধাপ হিসাব করে।
-// যেমন সর্বোচ্চ ডাটা 3500 হলে -> 0, 1k, 2k, 3k, 4k
 // ============================================================
 import 'dart:math' as math;
 
@@ -11,7 +9,7 @@ class ChartAxis {
   final double maxValue;
   final double step;
 
-  /// Y-axis এ কয়টি ধাপ থাকবে (0 ছাড়া)
+  /// Y-axis
   static const int tickCount = 4;
 
   factory ChartAxis.fromMax(double dataMax) {

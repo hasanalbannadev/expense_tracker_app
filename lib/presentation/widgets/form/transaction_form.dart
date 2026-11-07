@@ -1,8 +1,5 @@
 // ============================================================
 // transaction_form.dart
-// Add ও Edit দুই স্ক্রিনেই এই একই ফর্ম ব্যবহার হয় (code reuse)।
-//  - initial থাকলে Edit mode: আগের তথ্য ফর্মে বসে যায়।
-//  - Save চাপলে সব validation চলে, পাশ হলে onSubmit কল হয়।
 // ============================================================
 import 'package:flutter/material.dart';
 
@@ -84,7 +81,6 @@ class _TransactionFormState extends State<TransactionForm> {
   Future<void> _submit() async {
     FocusScope.of(context).unfocus();
 
-    // সব ফিল্ডের validation একসাথে চালানো
     if (!_formKey.currentState!.validate()) return;
 
     setState(() => _isSaving = true);

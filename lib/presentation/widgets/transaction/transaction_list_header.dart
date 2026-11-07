@@ -1,7 +1,6 @@
 // ============================================================
 // transaction_list_header.dart
-// "All Transactions" টাইটেল + সার্চ আইকন। আইকনে চাপলে সার্চ বক্স খোলে,
-// লিখলে তালিকা সাথে সাথে ফিল্টার হয়।
+// "All Transactions"
 // ============================================================
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -30,7 +29,6 @@ class _TransactionListHeaderState extends ConsumerState<TransactionListHeader> {
 
   void _toggleSearch() {
     setState(() => _isSearching = !_isSearching);
-    // সার্চ বন্ধ করলে লেখা ও ফিল্টার দুটোই মুছে যায়
     if (!_isSearching) {
       _controller.clear();
       ref.read(searchQueryProvider.notifier).clear();

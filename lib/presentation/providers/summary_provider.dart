@@ -1,7 +1,6 @@
 // ============================================================
 // summary_provider.dart
-// Dashboard এর তিনটি কার্ডের ডাটা (Income / Expense / Balance)।
-// transactionsProvider বদলালে এটি নিজে নিজে আবার হিসাব করে।
+// Dashboard card (Income / Expense / Balance)।
 // ============================================================
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

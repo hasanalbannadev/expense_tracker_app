@@ -1,6 +1,5 @@
 // ============================================================
 // statistics_provider.dart
-// Statistics স্ক্রিন: This Month / Last Month নির্বাচন ও সেই মাসের হিসাব।
 // ============================================================
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

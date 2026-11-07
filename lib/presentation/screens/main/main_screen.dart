@@ -1,7 +1,5 @@
 // ============================================================
 // main_screen.dart
-// অ্যাপের মূল কাঠামো: IndexedStack (৪টি ট্যাব) + Bottom Navigation + FAB।
-// FAB (+) শুধু Home ট্যাবে দেখায় এবং Add Transaction স্ক্রিনে নিয়ে যায়।
 // ============================================================
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

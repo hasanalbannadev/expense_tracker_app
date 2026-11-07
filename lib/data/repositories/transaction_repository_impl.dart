@@ -1,7 +1,5 @@
 // ============================================================
 // transaction_repository_impl.dart
-// Domain এর TransactionRepository এর আসল রূপ।
-// Entity <-> Model রূপান্তর করে datasource কে কল করে।
 // ============================================================
 import '../../domain/entities/transaction_entity.dart';
 import '../../domain/repositories/transaction_repository.dart';

@@ -1,8 +1,5 @@
 // ============================================================
 // stats_bar_chart.dart
-// কোনো বাইরের প্যাকেজ ছাড়া নিজে বানানো বার চার্ট (Income vs Expense)।
-//  - Y-axis ও গ্রিড লাইন ChartAxis দিয়ে "সুন্দর" ধাপে ভাগ করা
-//  - বার ওঠার অ্যানিমেশন (TweenAnimationBuilder)
 // ============================================================
 import 'dart:math' as math;
 
@@ -43,7 +40,6 @@ class StatsBarChart extends StatelessWidget {
             child: Stack(
               clipBehavior: Clip.none,
               children: [
-                // গ্রিড লাইন ও Y-axis লেবেল
                 for (var i = 0; i < ticks.length; i++)
                   Positioned(
                     left: 0,
@@ -99,7 +95,6 @@ class StatsBarChart extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 18),
-          // বারের নিচের লেবেল
           const Padding(
             padding: EdgeInsets.only(left: _axisWidth),
             child: Row(
@@ -154,7 +149,6 @@ class _AnimatedBar extends StatelessWidget {
                 ),
               ),
             ),
-            // পরিমাণের লেখা বারের মাথার ঠিক উপরে
             Positioned(
               bottom: height + 4,
               child: Text(

@@ -1,7 +1,5 @@
 // ============================================================
 // recent_transactions_section.dart
-// "Recent Transactions" হেডার + "See All" লিংক + সর্বশেষ লেনদেনের তালিকা।
-// লোডিং / এরর / খালি — তিন অবস্থাই সামলানো হয়েছে।
 // ============================================================
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -37,7 +35,7 @@ class RecentTransactionsSection extends ConsumerWidget {
                 ),
               ),
             ),
-            // "See All" চাপলে List ট্যাবে যায়
+            // "See All"
             TextButton(
               onPressed: () =>
                   ref.read(bottomNavIndexProvider.notifier).setIndex(1),

@@ -1,7 +1,5 @@
 // ============================================================
 // calculate_summary_usecase.dart
-// লেনদেনের তালিকা থেকে মোট আয়, মোট খরচ ও ব্যালেন্স হিসাব করে।
-// Add/Edit/Delete এর পর তালিকা বদলালেই এটি নতুন করে হিসাব করে (dynamic)।
 // ============================================================
 import '../entities/transaction_entity.dart';
 import '../entities/transaction_summary.dart';

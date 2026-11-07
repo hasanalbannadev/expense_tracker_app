@@ -1,7 +1,6 @@
 // ============================================================
 // summary_cards_section.dart
-// Total Income, Total Expense ও Current Balance — তিনটি কার্ড।
-// summaryProvider বদলালে নিজে নিজে আপডেট হয় (dynamic calculation)।
+// Total Income, Total Expense ও Current Balance
 // ============================================================
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

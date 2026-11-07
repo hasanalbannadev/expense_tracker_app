@@ -1,6 +1,5 @@
 // ============================================================
 // transaction_local_datasource.dart
-// সরাসরি Sqflite এর সাথে কথা বলে (CRUD query এখানেই)।
 // ============================================================
 import 'package:sqflite/sqflite.dart';
 
@@ -13,7 +12,7 @@ class TransactionLocalDataSource {
 
   final DatabaseHelper _dbHelper;
 
-  /// সব লেনদেন: তারিখ অনুযায়ী নতুন আগে
+  ///all transaction in sort by date
   Future<List<TransactionModel>> getAll() async {
     final db = await _dbHelper.database;
     final rows = await db.query(

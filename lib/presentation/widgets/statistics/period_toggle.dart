@@ -1,6 +1,6 @@
 // ============================================================
 // period_toggle.dart
-// "This Month" / "Last Month" বাছাইয়ের দুটি বাটন।
+// "This Month" / "Last Month" |
 // ============================================================
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

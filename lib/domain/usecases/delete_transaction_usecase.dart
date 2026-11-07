@@ -1,6 +1,5 @@
 // ============================================================
 // delete_transaction_usecase.dart
-// id দিয়ে একটি লেনদেন মুছে ফেলার use case।
 // ============================================================
 import '../repositories/transaction_repository.dart';
 

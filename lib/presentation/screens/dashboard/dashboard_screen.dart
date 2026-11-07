@@ -1,7 +1,6 @@
 // ============================================================
 // dashboard_screen.dart
-// প্রথম স্ক্রিন: অ্যাপের নাম, তিনটি summary কার্ড ও সাম্প্রতিক লেনদেন।
-// FAB (+) MainScreen এ আছে।
+// FAB (+) MainScreen
 // ============================================================
 import 'package:flutter/material.dart';
 
@@ -15,7 +14,6 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      // নিচে বাড়তি জায়গা, যাতে FAB শেষ আইটেম ঢেকে না ফেলে
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 100),
       children: const [
         DashboardHeader(),

@@ -1,6 +1,5 @@
 // ============================================================
 // add_transaction_screen.dart
-// নতুন লেনদেন যোগ করার স্ক্রিন। ফর্ম পাশ হলে ডাটাবেসে সেভ করে ফিরে যায়।
 // ============================================================
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,7 +19,6 @@ class AddTransactionScreen extends ConsumerWidget {
     WidgetRef ref,
     TransactionEntity transaction,
   ) async {
-    // pop এর পরও SnackBar দেখানোর জন্য আগেই ধরে রাখা
     final messenger = ScaffoldMessenger.of(context);
     final navigator = Navigator.of(context);
     final notifier = ref.read(transactionsProvider.notifier);

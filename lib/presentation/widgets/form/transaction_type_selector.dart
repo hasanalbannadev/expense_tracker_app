@@ -1,7 +1,5 @@
 // ============================================================
 // transaction_type_selector.dart
-// Income / Expense বাছাইয়ের দুটি বাটন।
-// FormField হওয়ায় সিলেক্ট না করলে নিচে লাল error লেখা দেখায়।
 // ============================================================
 import 'package:flutter/material.dart';
 
@@ -81,7 +79,7 @@ class _TypeOption extends StatelessWidget {
         ? Icons.arrow_circle_up_outlined
         : Icons.arrow_circle_down_outlined;
 
-    // সিলেক্ট হলে পুরো রঙিন, না হলে হালকা রঙ
+
     final background = isSelected ? color : lightColor;
     final foreground = isSelected ? Colors.white : color;
 

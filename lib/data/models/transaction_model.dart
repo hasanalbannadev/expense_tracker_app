@@ -1,7 +1,5 @@
 // ============================================================
 // transaction_model.dart
-// ডাটাবেসের Map <-> Entity রূপান্তরের মডেল।
-// date টেক্সট (ISO-8601), type টেক্সট ("income"/"expense") হিসেবে সেভ হয়।
 // ============================================================
 import '../../core/constants/db_constants.dart';
 import '../../core/utils/date_formatter.dart';
@@ -25,7 +23,7 @@ class TransactionModel {
   final String type;
   final String date;
 
-  /// ডাটাবেসের row (Map) থেকে model
+  /// database row (Map) from model
   factory TransactionModel.fromMap(Map<String, Object?> map) {
     return TransactionModel(
       id: map[DbConstants.colId] as int?,
@@ -37,7 +35,7 @@ class TransactionModel {
     );
   }
 
-  /// Entity থেকে model
+  /// Entity from model
   factory TransactionModel.fromEntity(TransactionEntity entity) {
     return TransactionModel(
       id: entity.id,
@@ -49,7 +47,7 @@ class TransactionModel {
     );
   }
 
-  /// ডাটাবেসে লেখার জন্য Map। নতুন হলে id দেওয়া হয় না (AUTOINCREMENT)।
+  /// database display Map। if new  id  (AUTOINCREMENT)।
   Map<String, Object?> toMap() {
     return {
       if (id != null) DbConstants.colId: id,

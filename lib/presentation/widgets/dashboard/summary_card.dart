@@ -1,6 +1,5 @@
 // ============================================================
 // summary_card.dart
-// একটি summary কার্ড (আইকন + লেবেল + টাকার অংক)। তিনটি কার্ডেই এটি ব্যবহার হয়।
 // ============================================================
 import 'package:flutter/material.dart';
 
@@ -55,7 +54,6 @@ class SummaryCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 4),
-                // বড় সংখ্যা ছোট স্ক্রিনে কেটে না যায় সেজন্য FittedBox
                 FittedBox(
                   fit: BoxFit.scaleDown,
                   alignment: Alignment.centerLeft,

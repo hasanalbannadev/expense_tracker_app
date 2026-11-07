@@ -1,6 +1,5 @@
 // ============================================================
 // profile_header.dart
-// প্রোফাইলের উপরের অংশ: অ্যাভাটার, নাম ও অ্যাপের নাম।
 // ============================================================
 import 'package:flutter/material.dart';
 
@@ -18,15 +17,6 @@ class ProfileHeader extends StatelessWidget {
           radius: 44,
           backgroundColor: Color(0xFFD9DBF7),
           child: Icon(Icons.person_rounded, size: 52, color: AppColors.primary),
-        ),
-        SizedBox(height: 14),
-        Text(
-          AppConstants.profileName,
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w800,
-            color: AppColors.textPrimary,
-          ),
         ),
         SizedBox(height: 2),
         Text(

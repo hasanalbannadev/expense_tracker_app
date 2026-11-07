@@ -1,8 +1,5 @@
 // ============================================================
 // transaction_details_screen.dart
-// একটি লেনদেনের পূর্ণ তথ্য + Edit ও Delete বাটন।
-// providerটি watch করায় Edit করে ফিরলে তথ্য নিজে নিজে আপডেট হয়।
-// Delete এর আগে AlertDialog দেখানো হয়।
 // ============================================================
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -37,7 +34,6 @@ class TransactionDetailsScreen extends ConsumerWidget {
     final navigator = Navigator.of(context);
     final notifier = ref.read(transactionsProvider.notifier);
 
-    // আগে স্ক্রিন বন্ধ, তারপর ডাটাবেস থেকে মোছা (ref dispose এর সমস্যা এড়াতে notifier আগেই নেওয়া)
     navigator.pop();
     try {
       await notifier.deleteTransaction(transaction.id!);

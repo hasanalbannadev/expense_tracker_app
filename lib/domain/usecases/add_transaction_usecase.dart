@@ -1,6 +1,5 @@
 // ============================================================
 // add_transaction_usecase.dart
-// নতুন লেনদেন যোগ করার use case।
 // ============================================================
 import '../entities/transaction_entity.dart';
 import '../repositories/transaction_repository.dart';

@@ -1,5 +1,5 @@
 // ============================================================
-// Income / Expense / Balance হিসাবের unit test
+// Income / Expense / Balance unit test
 // ============================================================
 import 'package:expense_tracker/domain/entities/transaction_entity.dart';
 import 'package:expense_tracker/domain/entities/transaction_type.dart';

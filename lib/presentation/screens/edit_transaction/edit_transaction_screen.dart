@@ -1,6 +1,5 @@
 // ============================================================
 // edit_transaction_screen.dart
-// আগের তথ্যসহ ফর্ম খোলে; Update চাপলে ডাটাবেসে আপডেট হয়।
 // ============================================================
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

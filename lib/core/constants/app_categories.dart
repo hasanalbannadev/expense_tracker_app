@@ -1,7 +1,5 @@
 // ============================================================
 // app_categories.dart
-// ক্যাটাগরির তালিকা (Dropdown এ দেখাবে)। প্রতিটি ক্যাটাগরির আইকন ও রং আছে।
-// ডাটাবেসে শুধু ক্যাটাগরির নাম (String) সেভ হয়।
 // ============================================================
 import 'package:flutter/material.dart';
 
@@ -87,7 +85,7 @@ class AppCategories {
     other,
   ];
 
-  /// নাম দিয়ে ক্যাটাগরি খোঁজে; না পেলে "Other" ফেরত দেয়।
+  /// "Other" ।
   static TransactionCategory byName(String name) {
     for (final category in all) {
       if (category.name == name) return category;

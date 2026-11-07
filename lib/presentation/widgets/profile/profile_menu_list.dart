@@ -1,8 +1,6 @@
 // ============================================================
 // profile_menu_list.dart
-// About App, Clear Data, Settings, Privacy Policy, Logout — পাঁচটি মেনু।
-//  - Clear Data: নিশ্চিতকরণের পর ডাটাবেসের সব লেনদেন মোছে
-//  - Logout: অ্যাপে লগইন নেই, তাই এটি শুধু ডেমো মেসেজ দেখায়
+// About App, Clear Data, Settings, Privacy Policy, Logout
 // ============================================================
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

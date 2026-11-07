@@ -1,7 +1,5 @@
 // ============================================================
 // amount_field.dart
-// Amount ইনপুট: বাম পাশে ৳ বক্স, ডান পাশে সংখ্যার ফিল্ড।
-// শুধু সংখ্যা, দশমিক বিন্দু ও কমা লেখা যায়; valid positive number না হলে error।
 // ============================================================
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,7 +20,6 @@ class AmountField extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // ৳ চিহ্নের বক্স
         Container(
           width: 52,
           height: 54,

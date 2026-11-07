@@ -1,7 +1,5 @@
 // ============================================================
 // transaction_list_screen.dart
-// সব লেনদেন ListView.builder দিয়ে দেখায় (assignment এর শর্ত)।
-// প্রতিটি কার্ডে: টাইটেল, পরিমাণ, ক্যাটাগরি, তারিখ, ধরন; আয়=সবুজ, খরচ=লাল।
 // ============================================================
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

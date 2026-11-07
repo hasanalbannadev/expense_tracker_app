@@ -1,6 +1,5 @@
 // ============================================================
 // update_transaction_usecase.dart
-// আগের লেনদেন আপডেট করার use case। id না থাকলে আপডেট করা যাবে না।
 // ============================================================
 import '../entities/transaction_entity.dart';
 import '../repositories/transaction_repository.dart';

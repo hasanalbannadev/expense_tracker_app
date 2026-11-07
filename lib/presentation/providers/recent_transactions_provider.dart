@@ -1,6 +1,5 @@
 // ============================================================
 // recent_transactions_provider.dart
-// Dashboard এ দেখানোর জন্য সর্বশেষ কয়েকটি লেনদেন।
 // ============================================================
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

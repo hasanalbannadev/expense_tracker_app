@@ -1,7 +1,7 @@
 // ============================================================
 // core_providers.dart
 // Dependency Injection: Database -> DataSource -> Repository।
-// Riverpod দিয়ে একটার ওপর আরেকটা তৈরি হয়।
+// Riverpod
 // ============================================================
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

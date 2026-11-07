@@ -1,7 +1,5 @@
 // ============================================================
 // transaction_repository.dart
-// Repository এর "চুক্তি" (abstract class)। Domain লেয়ার শুধু এটাই চেনে।
-// আসল কাজ data লেয়ারের TransactionRepositoryImpl এ হয়।
 // ============================================================
 import '../entities/transaction_entity.dart';
 
