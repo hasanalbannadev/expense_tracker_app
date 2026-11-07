@@ -244,7 +244,7 @@ Unit tests cover:
 **Hasan Al Banna**
 Flutter Developer
 
-🌐 Portfolio: [hasanalbannadev.github.io](https://github.com/hasanalbannadev/hasanalbannadev.github.io)
+🌐 Portfolio: [https://hasanalbannadev.github.io/]
 💻 GitHub: [@hasanalbannadev](https://github.com/hasanalbannadev)
 
 ---
