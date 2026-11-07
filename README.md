@@ -15,7 +15,7 @@ Add, view, update and delete your daily income & expenses, and watch your balanc
 ![Offline](https://img.shields.io/badge/Storage-Offline%20First-F59E0B?style=flat-square)
 ![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-3DDC84?style=flat-square&logo=android&logoColor=white)
 ![Analyze](https://img.shields.io/badge/flutter%20analyze-0%20issues-success?style=flat-square)
-![Tests](https://img.shields.io/badge/flutter%20test-10%20passed-success?style=flat-square)
+![Tests](https://img.shields.io/badge/flutter%20test-passing-success?style=flat-square)
 ![Intl](https://img.shields.io/badge/intl-0.20-blue?style=flat-square)
 ![Path](https://img.shields.io/badge/path-1.9-blue?style=flat-square)
 
